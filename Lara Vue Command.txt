@@ -1,0 +1,51 @@
+composer global require laravel/installer
+laravel new lara_vue
+composer require laravel/ui
+php artisan ui vue --auth
+npm install
+npm update vue-loader
+npm run dev
+php artisan serve
+php artisan make:seeder UserSeeder
+php artisan migrate:refresh --seed
+npm install vue router
+npm install vue-router --save
+npm run watch // For auto run
+
+php artisan make:model Category -mcr
+php artisan make:model Product -mcr
+
+npm install object-to-formdata // For Image Upload - https://gist.github.com/devzakir/0f85940747af4f50b3dc229c827c8f2d
+
+npm install axios vform // For form validation - https://github.com/cretueusebiu/vform
+npm install sweetalert2 - https://sweetalert2.github.io/#download
+
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate:refresh --seed
+
+In App/HTTP/Kernel.php
+
+'api' => [
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            'throttle:api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+
+In .env file
+
+For Localhost - SANCTUM_STATEFUL_DOMAINS=localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1
+For Live - Your Api Domain Name, Your Main Domain Name
+
+In resources/js/bootstrap.js
+
+axios.defaults.withCredentials = true;
+
+// installing vuex
+npm install vuex --save
+// then in your store.js
+import Vuex from 'vuex'
+
+Vue.use(Vuex);
+
+
